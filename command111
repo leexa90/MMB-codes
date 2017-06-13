@@ -1,0 +1,154 @@
+
+
+# Before running this, copy the provided 1GID.shifted.pdb to last.1.pdb in your working directory
+
+firstStage 111
+lastStage 111
+
+# The reporting interval is set empirically, it has no particular physical meaning in this case:
+reportingInterval .5
+numReportingIntervals 100
+
+# Multi-Template modelling. Artifically broke up 2cky to A chain and loop (13-26) A chain
+RNA A 1 GGCUUAUCAAGAGAGGUGGAGGGACUGGCCCGAUGAAACCCGGCAACCAGAAAUGGUGCCAAUUCCUGCAGCGGAAACGUUGAAAGAUGAGCCA
+#RNA A 13 GCUUGUUCACAGGC
+RNA B 46 ACCACUAGUCUAGCGUCAGC  
+RNA D 70 GCUGACGCUAGGCUAGUGGU
+# Threading 2cky back to 2cky
+RNA C 1 GGCUUAUCAAGAGAGGUGGAGGGACUGGCCCGAUGAAACCCGGCAACCACUAGUCUAGCGUCAGCUUCGGCUGACGCUAGGCUAGUGGUGCCAAUUCCUGCAGCGGAAACGUUGAAAGAUGAGCCA
+
+
+mobilizer Rigid A 1 94
+mobilizer Rigid C 46 89
+mobilizer Rigid B 46 65
+mobilizer Rigid D 70 89
+
+
+
+# Old way to prevent steric clashes, as described in Flores & Altman, RNA 2010:
+#contact AllHeavyAtomSterics C 146 164
+
+# More modern way, using "Physics where you want it" applied to target only:
+#setDefaultMDParameters
+#includeResidues C 3 36
+
+
+# Note that for large molecules, the force field can get expensive. In such cases, try threading it in parts.
+
+#Alignment forces. More modern way, which pulls together like-named atoms in corresponding residues:
+# First, specify that the alignment is explicit, rather than using a SeqAn gapped alignment. Internally, this simply applies a high penalty to gaps:
+alignmentForces noGap
+# Next, specify the force constant for the alignment springs. There is not much physical meaning to this choice of force constant, it is just empirically sufficient to pull the chains together nicely:
+alignmentForces forceConstant 300.0
+
+# Finally, specify corresponding residue stretches to be pulled together on template and target:
+alignmentForces A 1 1 C 1 1
+alignmentForces A 2 2 C 2 2
+alignmentForces A 3 3 C 3 3
+alignmentForces A 4 4 C 4 4
+alignmentForces A 5 5 C 5 5
+alignmentForces A 6 6 C 6 6
+alignmentForces A 7 7 C 7 7
+alignmentForces A 8 8 C 8 8
+alignmentForces A 9 9 C 9 9
+alignmentForces A 10 10 C 10 10
+alignmentForces A 11 11 C 11 11
+alignmentForces A 12 12 C 12 12
+alignmentForces A 13 13 C 13 13
+alignmentForces A 14 14 C 14 14
+alignmentForces A 15 15 C 15 15
+alignmentForces A 16 16 C 16 16
+alignmentForces A 17 17 C 17 17
+alignmentForces A 18 18 C 18 18
+alignmentForces A 19 19 C 19 19
+alignmentForces A 20 20 C 20 20
+alignmentForces A 21 21 C 21 21
+alignmentForces A 22 22 C 22 22
+alignmentForces A 23 23 C 23 23
+alignmentForces A 24 24 C 24 24
+alignmentForces A 25 25 C 25 25
+alignmentForces A 26 26 C 26 26
+alignmentForces A 27 27 C 27 27
+alignmentForces A 28 28 C 28 28
+alignmentForces A 29 29 C 29 29
+alignmentForces A 30 30 C 30 30
+alignmentForces A 31 31 C 31 31
+alignmentForces A 32 32 C 32 32
+alignmentForces A 33 33 C 33 33
+alignmentForces A 34 34 C 34 34
+alignmentForces A 35 35 C 35 35
+alignmentForces A 36 36 C 36 36
+alignmentForces A 37 37 C 37 37
+alignmentForces A 38 38 C 38 38
+alignmentForces A 39 39 C 39 39
+alignmentForces A 40 40 C 40 40
+alignmentForces A 41 41 C 41 41
+alignmentForces A 42 42 C 42 42
+alignmentForces A 43 43 C 43 43
+alignmentForces A 44 44 C 44 44
+alignmentForces A 45 45 C 45 45
+alignmentForces A 46 46 C 46 46
+alignmentForces A 47 47 C 47 47
+alignmentForces A 48 48 C 48 48
+alignmentForces A 55 55 C 87 87
+alignmentForces A 56 56 C 88 88
+alignmentForces A 57 57 C 89 89
+alignmentForces A 58 58 C 90 90
+alignmentForces A 59 59 C 91 91
+alignmentForces A 60 60 C 92 92
+alignmentForces A 61 61 C 93 93
+alignmentForces A 62 62 C 94 94
+alignmentForces A 63 63 C 95 95
+alignmentForces A 64 64 C 96 96
+alignmentForces A 65 65 C 97 97
+alignmentForces A 66 66 C 98 98
+alignmentForces A 67 67 C 99 99
+alignmentForces A 68 68 C 100 100
+alignmentForces A 69 69 C 101 101
+alignmentForces A 70 70 C 102 102
+alignmentForces A 71 71 C 103 103
+alignmentForces A 72 72 C 104 104
+alignmentForces A 73 73 C 105 105
+alignmentForces A 74 74 C 106 106
+alignmentForces A 75 75 C 107 107
+alignmentForces A 76 76 C 108 108
+alignmentForces A 77 77 C 109 109
+alignmentForces A 78 78 C 110 110
+alignmentForces A 79 79 C 111 111
+alignmentForces A 80 80 C 112 112
+alignmentForces A 81 81 C 113 113
+alignmentForces A 82 82 C 114 114
+alignmentForces A 83 83 C 115 115
+alignmentForces A 84 84 C 116 116
+alignmentForces A 85 85 C 117 117
+alignmentForces A 86 86 C 118 118
+alignmentForces A 87 87 C 119 119
+alignmentForces A 88 88 C 120 120
+alignmentForces A 89 89 C 121 121
+alignmentForces A 90 90 C 122 122
+alignmentForces A 91 91 C 123 123
+alignmentForces A 92 92 C 124 124
+alignmentForces A 93 93 C 125 125
+alignmentForces A 94 94 C 126 126
+alignmentForces B  46 65 C 46 65
+alignmentForces D  70 89 C 66 85
+baseInteractionScaleFactor 1
+baseInteraction C 65 WatsonCrick C 70 WatsonCrick Cis
+baseInteraction C 64 WatsonCrick C 71 WatsonCrick Cis
+baseInteraction C 63 WatsonCrick C 72 WatsonCrick Cis
+baseInteraction C 62 WatsonCrick C 73 WatsonCrick Cis
+baseInteraction C 61 WatsonCrick C 74 WatsonCrick Cis
+baseInteraction C 60 WatsonCrick C 75 WatsonCrick Cis
+baseInteraction C 59 WatsonCrick C 76 WatsonCrick Cis
+baseInteraction C 58 WatsonCrick C 77 WatsonCrick Cis
+baseInteraction C 57 WatsonCrick C 78 WatsonCrick Cis
+baseInteraction C 56 WatsonCrick C 79 WatsonCrick Cis
+baseInteraction C 55 WatsonCrick C 80 WatsonCrick Cis
+baseInteraction C 54 WatsonCrick C 81 WatsonCrick Cis
+baseInteraction C 53 WatsonCrick C 82 WatsonCrick Cis
+baseInteraction C 52 WatsonCrick C 83 WatsonCrick Cis
+baseInteraction C 51 WatsonCrick C 84 WatsonCrick Cis
+baseInteraction C 50 WatsonCrick C 85 WatsonCrick Cis
+baseInteraction C 49 WatsonCrick C 86 WatsonCrick Cis
+
+

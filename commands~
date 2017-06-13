@@ -1,0 +1,9 @@
+for i in `ls -d top*pdb`; do pdb4amber -i $i -y > ${i}2;
+
+cat ori_tleap | sed "s/ZZZ/${i}2/g" > tleap; tleap -f tleap ; python remove_first_resi.py rna_tleap_out${i}2 ;done
+
+
+
+cpptraj  rna_tleap_outtopZZZ.pos_out.pdb2 < cpptraj_rmsd 
+
+

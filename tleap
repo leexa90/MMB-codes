@@ -1,0 +1,11 @@
+
+
+source leaprc.ff99SB
+loadAmberParams frcmod.ionsjc_tip3p
+rna = loadpdb topZZZ.pos_out.pdb2
+
+
+savepdb rna rna_tleap_outtopZZZ.pos_out.pdb2
+
+#saveAmberParm rna mdm2_p53.parm7 mdm2_p53.crd
+quit
