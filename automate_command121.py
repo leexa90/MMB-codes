@@ -100,9 +100,9 @@ for i in range(len(b)):
 
 print 'firstStage 121\nlastStage 121'
 print 'reportingInterval .5\nnumReportingIntervals 100'
-print 'RNA A 1 ', A.upper()
-print 'RNA C 1 ', B.upper()
-print 'mobilizer Rigid A 1 %s ' %str(len(A))
+print 'RNA A 1 ', B.upper()
+print 'RNA C 1 ', A.upper()
+print 'mobilizer Rigid A 1 %s ' %str(len(B))
 
 counter = 0
 for i in open("PA.secstruct",'r'):
